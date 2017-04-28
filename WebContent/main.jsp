@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<link rel="stylesheet" href="./kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="./kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="./kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="./kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="./kindeditor/plugins/code/prettify.js"></script>
 <script type="text/javascript">
 var s=setInterval("sc()",100);
 function sc(){
@@ -86,13 +91,20 @@ function fresh(){
 function openNew(){
 	window.showModalDialog("page.jsp",window,"dialogHeight=300px;dialogWidth=300px;center=yes;status=0;edge=sunken;help=no;"); 
 }
+KindEditor.ready(function(K){
+	window.editor=K.create('textarea[name="say"]',{
+		height:'180px',
+		items:["fontname","fontsize","fontcolor","bold","italic","underline","|","emoticons",],
+		resizeType:'0',
+	});
+});
 </script>
 <title>简单聊天室</title>
 <style type="text/css" >
 body{
-	height:520px;
-	width:850px;
-	margin:0 auto;
+	height:700px;
+	width:800px;
+	background:url(back.jpg) repeat fixed;
 }
 </style>
 
@@ -108,27 +120,27 @@ body{
 	Date now = new Date();
 	fy = request.getParameter("say");
 	if(fy!=null){
-		String ans = now.toLocaleString().toString()+" "+sess_uname+"说: "+fy+"<br>";
+		String ans = now.toLocaleString()+" "+sess_uname+"说: "+fy+"<br>";
 		tmp = (String)application.getAttribute("app_fy");
 		ans = tmp + ans;
 	    application.setAttribute("app_fy",ans);
 	}
 %>
 <form name="form2" action="quit.jsp" >
-<div  style="width:200px;height:500px;border:1px solid #000;float:left;">
-在线用户：<br/>
-<div id="onlineUser" style="width:180px;height:400px;border:none;">
+<div  style="width:145px;height:698px;border:1px solid #000;float:left;">
+在线用户：<img  src="fresh.png" alt="点击刷新页面"  style="cursor:pointer;width:30px;height:30px;" onclick="fresh()" />
+<br/>
+<div id="onlineUser" style="width:140px;height:600px;border:none;">
 </div>
-<input type="button"  value="刷新" onclick="fresh()" />
 <input type="submit" name="button1" value="退出" onclick="return quit()"/><br>
 </div>
 </form>
 
-<div id="chat_div" style="width:600px;height:400px;border:1px solid #000;float:left;overflow-y:scroll;"></div>
+<div id="chat_div" style="width:650px;height:500px;border:1px solid #000;float:left;overflow-y:scroll;"></div>
 
 <form action="main.jsp" method="post" name="chats">
-  <div style="width:550px;height:95px;float:left;"><textarea id="say" name="say" style="width:540px;height:94px;resize:none;" ></textarea></div>
-  <span style="width:50px;height:95px;" ><input type = "submit" value="发送" onclick="return jud()" style="margin:0;width:50px;height:90px;" /></span>
+  <div style="float:left;"><textarea id="say" name="say" style="width:540px;height:94px;resize:none;" ></textarea></div>
+  <div style="width:50px;height:95px;float:right;" ><input type = "submit" value="发送"/></div>
 </form>
 </body>
 </html>

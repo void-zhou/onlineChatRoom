@@ -25,7 +25,7 @@
 			out.println("<b style='color:red;'>"+s+" "+"(×Ô¼º)"+"<b/>"+"<br/>");
 		}
 		else{
-			out.println("<a class='astyle' onclick='openNew()'>"+s+"</a>"+"<br/>");
+			out.println("<a class='astyle' onclick='openNew();'>"+s+"</a>"+"<br/>");
 		}
 	}
 	out.close();

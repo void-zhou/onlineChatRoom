@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ÁÄÌìÊÒµÇÂ¼½çÃæ</title>
 </head>
-<body>
+<body style="background:url(login_back.jpg) no-repeat;">
 	<%
 		if(session.getAttribute("sess_uname")!=null){
 			out.print("ÄúÉÏ´ÎÎ´Õý³£ÍË³ö£¬¼´½«·µ»ØÁÄÌìÊÒ£¡");
@@ -14,8 +14,10 @@
 		else{
 	%>
 	<form action="chat_check.jsp" name="form1" >
+		<div style="position:absolute;top:200px;left:600px;">
 		<label for="username">ÓÃ»§Ãû£º</label><input type="text" id="username" name="username" required="required" pattern="[A-Za-z0-9]{1,9}"/><br/><br>
-		<input type="submit" value="µÇÂ¼"/>  <input type="reset" value="ÖØÖÃ"/>
+		<span ><input type="submit" value="µÇÂ¼"/></span>
+		</div>
 	</form>
 	<%
 	}

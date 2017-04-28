@@ -7,6 +7,7 @@
 <title>暂时不知道有啥用</title>
 </head>
 <body>
-	Hello?excuse me？
+	<frameset rows="70%,30%">
+	</frameset>
 </body>
 </html>

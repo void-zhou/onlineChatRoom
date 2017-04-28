@@ -30,7 +30,12 @@
 		}
 		else{
 			onlineUserList.add(name);
-			out.print("欢迎你,"+name);
+			out.print("欢迎你,"+"<font style='color:red;font-size:30px;font-weight:bold;'>"+name+"</font>"+"<br/>"+"现在是："+new Date().toLocaleString());
+			%>
+			<div  >
+				<img src="welcome1.jpg" style="width:800px;height:600px;">
+			</div>
+			<% 
 			session.setAttribute("sess_uname",name);
 			if(application.getAttribute("app_fy")==null){
 				application.setAttribute("app_fy"," ");
@@ -39,7 +44,7 @@
 		    tmp=(String)application.getAttribute("app_fy");
 		    tmp=tmp+name+"进入了聊天室。"+"<br/>";
 		    application.setAttribute("app_fy",tmp);
-			response.setHeader("refresh", "2;url=main.jsp");
+			response.setHeader("refresh", "4;url=main.jsp");
 		}
 	%>
 </body>
